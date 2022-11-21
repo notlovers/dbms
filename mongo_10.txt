@@ -1,0 +1,59 @@
+show dbs(view database)
+
+use dbName(create db)
+
+db(current db)
+
+db.dropDatabase()(delete db)
+
+show collections(show collection)
+
+db.createCollection('comments') (create collection)
+
+db.comments.drop() (delete collection)
+
+db.comments.find() (show all rows)
+
+----(single row insertion)--------
+
+db.comments.insert({
+    'name': 'Harry',
+    'lang': 'JavaScript',
+    'member_since': 5
+ })
+
+------(multi row insertion)-------
+
+db.comments.insertMany([{
+    'name': 'Harry',
+    'lang': 'JavaScript',
+    'member_since': 5
+    }, 
+    {'name': 'Rohan',
+    'lang': 'Python',
+    'member_since': 3
+    },
+    {'name': 'Lovish',
+    'lang': 'Java',
+    'member_since': 4
+}])
+
+------(search)--------
+
+db.comments.find({lang:'Python'})
+
+------(count)------------
+
+db.comments.find().count()
+
+-----------(update)-------
+
+db.comments.updateOne({name: 'Shubham'},
+{$set: {'name': 'Harry',
+    'lang': 'JavaScript',
+    'member_since': 51
+}}, {upsert: true})
+
+----(delete row)------ 
+
+db.comments.remove({name: 'Harry'})

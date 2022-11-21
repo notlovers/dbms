@@ -1,0 +1,34 @@
+------(CREATE)-----------
+
+show dbs
+use dbName
+db
+db.createCollection('comments')
+db.comments.insertMany([{
+    'name': 'Harry',
+    'lang': 'JavaScript',
+    'member_since': 5
+    }, 
+    {'name': 'Rohan',
+    'lang': 'Python',
+    'member_since': 3
+    },
+    {'name': 'Lovish',
+    'lang': 'Java',
+    'member_since': 4
+}])
+
+------(READ)------------------
+
+db.comments.find()
+
+----------(UPDATE)------------------
+
+db.comments.updateOne({name: 'Shubham'},
+{$set: {'name': 'Harry',
+    'lang': 'JavaScript',
+    'member_since': 51
+}}, {upsert: true})
+
+----------(DELETE)-----------
+db.comments.remove({name: 'Harry'})

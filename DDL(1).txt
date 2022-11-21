@@ -1,0 +1,37 @@
+create table Department(Deptno int primary key, Dname varchar(20), Location varchar(20));
+desc Department;
+insert into Department values(10, 'Accounting', 'Mumbai');
+insert into Department values(20, 'Research', 'pune');
+insert into Department values(30, 'Sales', 'Nashik');
+insert into Department values(40, 'Operations', 'Nagpur');
+
+select * from Department;
+
+create table employee(Empno int primary key, Ename varchar(20), Job varchar(10), Mgr int, Joined_date date, salary int, commission int, Deptno int, Address varchar(20));
+desc employee;
+insert into employee values(1001, 'Nilesh Joshi', 'Clerk', 105, '12-17-1995', 2800, 600, 20, 'Nashik');
+insert into employee values(1002, 'Avinash Pawar', 'Sales man', 103, '02-20-1996', 5000, 1200, 30, 'Nagpur');
+insert into employee values(1003, 'Amit kumar', 'Manager', 104, '04-02-1986', 2000, NULL, 30, 'pune');
+select * from employee;
+
+select distinct(Job)from employee;
+
+update Department set Location='Banglore' where Deptno=40;
+select * from Department;
+
+update employee  set Ename='Nikhil Gosavi' where Empno=1003;
+
+delete from employee where Ename='Avinash Pawar';
+select* from employee;
+
+create table department_temp as select * from Department;
+desc department_temp;
+select * from department_temp;
+
+create view v1 as select Dname, Location from Department;
+select * from v1;
+
+select Ename from employee where salary between 5000 and 20000;
+
+select Ename from employee where Job not like 'Sales man';
+
